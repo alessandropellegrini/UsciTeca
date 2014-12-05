@@ -329,7 +329,7 @@ if($WP_integration) {
     </div>
     </main>
 <footer>
-         Copyright &copy; <?= date("Y") ?> - <a href="http://www.pellegrini.tk" target="_blank"> Alessandro Pellegrini </a>
+         Copyright &copy; <?= date("Y") ?> - <a href="http://www.pellegrini.tk" target="_blank"> Alessandro Pellegrini </a> - <a href="https://github.com/alessandropellegrini/UsciTeca">sources</a> on GitHub
 </footer>
   </body>
 </html>
