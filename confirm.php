@@ -71,7 +71,7 @@ if(isset($_POST['seed']) && isset($_GET['confirm']) && $_POST['seed'] == $_GET['
 	} 
 
 	if($_POST['aggiornamento'] == "") {
-		$sql = "INSERT INTO `markers` (`lat`, `lng`, `nome`, `indirizzo`, `luogo`, `provincia`, `contatto`, `telefono`, `cellulare`, `email`, `tipo`, `posti`, `fuoco`, `acqua`, `campo`, `gratis`, `gioco`, `ombra`, `pending`) VALUES ('" . $_POST['latFld'] . "','" . $_POST['lngFld'] . "','" . $nome . "','" . $indirizzo . "','" . $luogo . "','" . $provincia ."','" . $contatto . "','" . $telefono . "','" . $cellulare . "','" . $email . "','" . $tipo . "','". $posti . "','" . $fuoco  . "','" . $acqua . "','" . $campo . "','" . $gratis ."','" . $gioco . "','" . $ombra . "', '1')";
+		$sql = "INSERT INTO `markers` (`lat`, `lng`, `nome`, `indirizzo`, `luogo`, `provincia`, `contatto`, `telefono`, `cellulare`, `email`, `tipo`, `posti`, `fuoco`, `acqua`, `campo`, `gratis`, `gioco`, `ombra`, `pending`) VALUES ('" . $_POST['latFld'] . "','" . $_POST['lngFld'] . "','" . $nome . "','" . $indirizzo . "','" . $luogo . "','" . $provincia ."','" . $contatto . "','" . $telefono . "','" . $cellulare . "','" . $email . "','" . $tipo . "','". $posti . "','" . $fuoco  . "','" . $acqua . "','" . $campo . "','" . $gratis ."','" . $gioco . "','" . $ombra . "', '0')";
 	} else {
 		$sql = "UPDATE `markers` SET `lat`='" . $_POST['latFld'] . "', `lng`='" . $_POST['lngFld'] . "', `nome`='" . $nome . "', `indirizzo`='" . $indirizzo . "', `luogo`='" . $luogo . "', `provincia`='" . $provincia ."', `contatto`='" . $contatto . "', `telefono`='" . $telefono . "', `cellulare`='" . $cellulare . "', `email`='" . $email . "', `tipo`='" . $tipo . "', `posti`='". $posti . "', `fuoco`='" . $fuoco . "', `acqua`='".$acqua."', `campo`='".$campo."', `gratis`='".$gratis."', `gioco`='".$gioco."', `ombra`='" .$ombra . "' WHERE id='" . $_POST['id'] . "';";
 	}
@@ -79,18 +79,7 @@ if(isset($_POST['seed']) && isset($_GET['confirm']) && $_POST['seed'] == $_GET['
 	if ($conn->query($sql) === TRUE) {
 	    if($_POST['aggiornamento'] == "") {
 
-		$messaggio = 'Grazie! Abbiamo ricevuto la tua proposta di inserire il posto per uscite "' . $nome . '" nell\'UsciTeca della Zona Cassiopea!' . "\n\n" .
-			     'Per confermare l\'aggiornamento del database, ti preghiamo di cliccare sul seguente link: ' .
-			     'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/verify.php?id=' . $conn->insert_id . "\n\n" .
-			     'Il link ha validita` 24 ore. Dopo tale intervallo di tempo, sara` necessario inviare nuovamente le informazioni';
-
-		// Manda email di conferma
-		mail($_POST['mittente'], "[UsciTeca] Conferma Posto", $messaggio,
-		     "From: webmaster@{$_SERVER['SERVER_NAME']}\r\n" .
-		     "Reply-To: webmaster@{$_SERVER['SERVER_NAME']}\r\n" .
-		     "X-Mailer: PHP/" . phpversion());
-
-		$msg_str = urlencode("Nuovo posto per uscite aggiunto con successo. <br/><strong>Riceverai a breve un'email per confermare l'inserimento del posto</strong>");
+		$msg_str = urlencode("Nuovo posto per uscite aggiunto con successo.");
                 header("Location: message.php?t=s&m=$msg_str");
                 exit();
 	    } else {
