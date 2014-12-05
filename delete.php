@@ -21,9 +21,11 @@ if ($conn->connect_error) {
 $sql = "DELETE FROM `markers` WHERE `id`='" . $_GET['id'] . "';";
 
 if ($conn->query($sql) === TRUE) {
-    echo '<html><head><meta http-equiv="refresh" content="5; url=index.php" /></head><body>Eliminazione eseguita con successo. Verrai reindirizzato alla <a href="index.php">pagina principale</a> tra 5 secondi...</body></html>';
+	$err_str = urlencode("Eliminazione eseguita con successo.");
+	header("Location: message.php?t=s&m=$err_str");
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+	$err_str = urlencode("Si &egrave; verificato un errore durante l'eliminazione. Per favore, contatta gli amministratori del sito!<br/><br/>Informazioni sull'errore: " . $conn->error);
+	header("Location: message.php?t=e&m=$err_str");
 }
 
 $conn->close();
