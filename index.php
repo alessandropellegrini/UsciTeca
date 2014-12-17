@@ -154,7 +154,7 @@ if($WP_integration) {
 		new_cell.innerHTML = '<input type="checkbox" id="cb_' + i + '" class="posticb" name="posticbg[]" value="' + markers[i].getAttribute("id") + '" checked/>';
 
 		var new_cell = new_row.insertCell(1);
-                new_cell.innerHTML = markers[i].getAttribute("nome");
+                new_cell.innerHTML = '<a href="place.php?id=' + markers[i].getAttribute("id") + '">' + markers[i].getAttribute("nome") + '</a>';
 
 		var new_cell = new_row.insertCell(2);
                 new_cell.innerHTML = markers[i].getAttribute("indirizzo");
