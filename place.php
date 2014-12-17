@@ -107,19 +107,9 @@ if(isset($row['tenda']) && !isset($row['accantonamento'])) {
 		if(isset($row['ombra'])) echo '<img src="img/ombra.png" />';
 	?>
     </td></tr>
+    <tr><td>Ultimo Aggiornamento:</td><td><?= $row['aggiornamento'] ?></td></tr>
     <tr><td colspan="2" align="center"><input type="button" value="Torna Indietro" onclick="window.history.back()"/></td></tr>
     </table>
-    <input type="hidden" name="tenda" value="<?= isset($row['tenda']) ?>">
-    <input type="hidden" name="accantonamento" value="<?= isset($row['accantonamento']) ?>">
-    <input type="hidden" name="acc_posti" value="<?= $posti ?>">
-    <input type="hidden" name="aggiornamento" value="<?= $row['aggiornamento'] ?>">
-    <input type="hidden" name="fuoco" value="<?= isset($row['fuoco']) ?>">
-    <input type="hidden" name="acqua" value="<?= isset($row['acqua']) ?>">
-    <input type="hidden" name="campo" value="<?= isset($row['campo']) ?>">
-    <input type="hidden" name="gratis" value="<?= isset($row['gratis']) ?>">
-    <input type="hidden" name="gioco" value="<?= isset($row['gioco']) ?>">
-    <input type="hidden" name="ombra" value="<?= isset($row['ombra']) ?>">
-    <input type="hidden" name="id" value="<?= $row['id'] ?>">
     </div>
     </div>
     </main>
