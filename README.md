@@ -16,4 +16,3 @@ Tuttavia questa funzionalità è facilmente escludibile in fase di configurazion
 * Creare un database MySql secondo lo schema in `database.sql`
 * Impostare le variabili di connessione al database (ed eventualmente l'integrazione con Word Press) nel file `config.php`
 
-Per poter funzionare correttamente, la funzione `mail()` di PHP deve essere abilitata.
