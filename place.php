@@ -22,11 +22,6 @@ if (!$db_selected) {
         die ('Can\'t use db : ' . mysql_error());
 }
 
-
-// Purge unconfirmed places, which are older that 24 hours
-$query = "DELETE FROM `markers` WHERE `pending` = '1' AND `inserimento` < ADDDATE(NOW(), INTERVAL -24HOUR)";
-mysql_query($query);
-
 // Select all the rows in the markers table
 $query = "SELECT * FROM markers WHERE `id`='" . $_GET['id'] . "'";
 $result = mysql_query($query);
@@ -108,6 +103,15 @@ if(isset($row['tenda']) && !isset($row['accantonamento'])) {
 	?>
     </td></tr>
     <tr><td>Ultimo Aggiornamento:</td><td><?= $row['aggiornamento'] ?></td></tr>
+    <tr><td><label onclick="document.getElementById('contact').style.display = 'block';">Clicca qui per contattare<br />il segnalatore:</label></td>
+        <td>
+           <form id="contact" style="display:none;" method="post" action="contact.php">
+	   Inserisci la tua email: <input type="text" name="sender" /><br />
+           <textarea rows="8" cols="50" name="messaggio">Inserisci qui il tuo messaggio...</textarea><br />
+           <input type="submit" value="Invia Email"/>
+	   <input type="hidden" name="id" value="<?= $row['id'] ?>" />
+	   </form>
+        </td></tr>
     <tr><td colspan="2" align="center"><input type="button" value="Torna Indietro" onclick="window.history.back()"/></td></tr>
     </table>
     </div>

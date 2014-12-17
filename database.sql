@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS `markers` (
   `gratis` tinyint(1) NOT NULL,
   `gioco` tinyint(1) NOT NULL,
   `ombra` tinyint(1) NOT NULL,
+  `contributore` varchar(30) NOT NULL,
   `inserimento` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `aggiornamento` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
